@@ -7,7 +7,7 @@ import {ENV} from '../../../utils';
 
 export function GridGames(props) {
   const { games } = props;
-  const enlaceurlServer=`${ENV.SERVER_HOST}`;
+  const enlaceurlServer=`${ENV.API_URL}`;
 
   return (
     <div className={styles.gridGames}>
