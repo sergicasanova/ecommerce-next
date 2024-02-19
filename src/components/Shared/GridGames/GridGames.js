@@ -7,7 +7,7 @@ import {ENV} from '../../../utils';
 
 export function GridGames(props) {
   const { games } = props;
-  const enlaceurlServer=`${ENV.API_URL}`;
+  const enlaceurlServer=`${ENV.SERVER_HOST}`;
 
   return (
     <div className={styles.gridGames}>
@@ -19,7 +19,7 @@ export function GridGames(props) {
           className={styles.game}
         >
           <div>
-            <img src={game.attributes.cover.data.attributes.url} />
+            <img src={`${enlaceurlServer}${game.attributes.cover.data.attributes.url}`} />
             {game.attributes.discount > 0 && (
               <Label.Discount className={styles.discount}>
                 {`-${game.attributes.discount}%`}
