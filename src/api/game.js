@@ -28,7 +28,7 @@ export class Game {
       const populate = `populate=*`;
       const urlParams = `${sort}&${paginationLimit}&${filterPlatform}&${populate}`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`;
+      const url = `${ENV.API_URL}${ENV.ENDPOINTS.GAME}?${urlParams}`;
 
       const response = await fetch(url);
       const result = await response.json();
@@ -48,7 +48,7 @@ export class Game {
       const populate = "populate=*";
       const urlParams = `${filters}&${pagination}&${populate}`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`;
+      const url = `${ENV.API_URL}${ENV.ENDPOINTS.GAME}?${urlParams}`;
 
       const response = await fetch(url);
       const result = await response.json();
@@ -68,7 +68,7 @@ export class Game {
       const populate = "populate=*";
       const urlParams = `${filters}&${pagination}&${populate}`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`;
+      const url = `${ENV.API_URL}${ENV.ENDPOINTS.GAME}?${urlParams}`;
 
       const response = await fetch(url);
       const result = await response.json();
@@ -85,7 +85,7 @@ export class Game {
     try {
       const filters = `filters[slug][$eq]=${slug}`;
       const populate = `populate[0]=wallpaper&populate[1]=cover&populate&populate[2]=screenshots&populate[3]=platform&populate[4]=platform.icon`;
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${filters}&${populate}`;
+      const url = `${ENV.API_URL}${ENV.ENDPOINTS.GAME}?${filters}&${populate}`;
 
       const response = await fetch(url);
       const result = await response.json();
@@ -102,7 +102,7 @@ export class Game {
     try {
       const populate = `populate[0]=cover&populate[1]=platform`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
+      const url = `${ENV.API_URL}${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
       const response = await fetch(url);
       const result = await response.json();
 
