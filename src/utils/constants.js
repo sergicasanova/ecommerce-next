@@ -1,5 +1,5 @@
 export const ENV = {
-    SERVER_HOST: "https://ecommerce-strapi-production-a96f.up.railway.app/",
+    SERVER_HOST: "https://ecommerce-strapi-production-a96f.up.railway.app",
     API_URL: "https://ecommerce-strapi-production-a96f.up.railway.app/api",
     ENDPOINTS: {
         AUTH: {
