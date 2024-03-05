@@ -17,7 +17,7 @@ export function Menu(props) {
   const router = useRouter();
 
   const openCloseSearch = () => setShowSearch((prevState) => !prevState);
-  const enlaceurlServer=`${ENV.SERVER_HOST}`;
+  const enlaceurlServer=`https://ecommerce-strapi-production-a96f.up.railway.app/api`;
 
   useEffect(() => {
     (async () => {
