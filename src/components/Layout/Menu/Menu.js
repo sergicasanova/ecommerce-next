@@ -17,6 +17,7 @@ export function Menu(props) {
   const router = useRouter();
 
   const openCloseSearch = () => setShowSearch((prevState) => !prevState);
+  const enlaceurlServer=`${ENV.SERVER_HOST}`;
 
   useEffect(() => {
     (async () => {
@@ -42,7 +43,7 @@ export function Menu(props) {
     <div className={styles.platforms}>
         {map(platforms, (platform) => (
             <Link key={platform.id} href={`/games/${platform.attributes.slug}`}>
-                <Image src={`http://localhost:1337${platform.attributes.icon.data.attributes.url}`} />
+                <Image src={`${enlaceurlServer}${platform.attributes.icon.data.attributes.url}`} />
             {platform.attributes.title}
             </Link>
         ))}

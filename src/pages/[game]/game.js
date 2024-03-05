@@ -1,7 +1,6 @@
 import {BasicLayout} from "@/layouts"
 import { Game } from "@/components/Game";
 import {Separator} from "@/components/Shared"
-import { Info } from "@/components/Account";
 
 export default function GamePage(props) {
     const { game } = props;
