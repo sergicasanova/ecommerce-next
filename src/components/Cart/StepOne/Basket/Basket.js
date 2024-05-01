@@ -3,11 +3,12 @@ import { map } from "lodash";
 import { fn } from "@/utils";
 import { useCart } from "@/hooks";
 import styles from "./Basket.module.scss";
+import {ENV} from '../../../../utils';
 
 export function Basket(props) {
   const { games } = props;
-  console.log(games)
   const { changeQuantityItem, deleteItem } = useCart();
+  const enlaceurlServer=`${ENV.SERVER_HOST}`;
 
   const options = Array.from({ length: 50 }, (_, index) => {
     const number = index + 1;
@@ -21,7 +22,7 @@ export function Basket(props) {
       <div className={styles.block}>
         {map(games, (game) => (
           <div key={game.id} className={styles.product}>
-            <Image src={game.attributes.cover.data.attributes.url} />
+            <Image src={`${enlaceurlServer}${game.attributes.cover.data.attributes.url}`} />
             <div>
               <div className={styles.info}>
                 <div>

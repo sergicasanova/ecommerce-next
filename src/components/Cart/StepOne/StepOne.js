@@ -8,7 +8,7 @@ export function StepOne(props) {
   return (
     <div className={styles.stepOne}>
       <div className={styles.center}>
-        <Basket/>
+        <Basket games={games}/>
       </div>
       <div className={styles.right}>
         <>RESUMEN</>
