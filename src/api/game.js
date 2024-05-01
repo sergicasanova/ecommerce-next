@@ -100,6 +100,7 @@ export class Game {
 
   async getGameById(id) {
     try {
+      //solo recogemos lo que queremos mostrar para no mal-gastar procesos
       const populate = `populate[0]=cover&populate[1]=platform`;
 
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
