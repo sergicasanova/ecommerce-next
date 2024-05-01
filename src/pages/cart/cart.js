@@ -5,7 +5,7 @@ import { CartLayout } from "@/layouts";
 import { useCart } from "@/hooks";
 import { Cart } from "@/components/Cart"
 
-
+const gameCtrl = new Game();
 
 export default function CartPage() {
   // si el step es vacio es igual a 1
@@ -13,8 +13,8 @@ export default function CartPage() {
     query: { step = 1 },
   } = useRouter();
   const currentStep = Number(step);
-  const { cart } = useCart();
   const [games, setGames] = useState(null);
+  const { cart } = useCart();
 
   useEffect(() => {
     (async () => {
