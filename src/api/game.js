@@ -103,7 +103,7 @@ export class Game {
       //solo recogemos lo que queremos mostrar para no mal-gastar procesos
       const populate = `populate[0]=cover&populate[1]=platform`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${id}?${populate}`;
       const response = await fetch(url);
       const result = await response.json();
 
