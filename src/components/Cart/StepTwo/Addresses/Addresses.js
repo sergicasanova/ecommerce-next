@@ -25,19 +25,25 @@ export function Addresses(props) {
 
     return (
         <div className={styles.addresses}>
-            <h2>Dirección</h2>
-
-            {map(addresses, (address) => (
-                <div key={address.id} className={styles.address}>
-                    <p>
-                        {address.attributes.name} ({address.attributes.title})
-                    </p>
-                    <p>
-                        {address.attributes.address}, {address.attributes.postal_code},{" "}
-                        {address.attributes.state}, {address.attributes.city} 
-                    </p>
-                </div>
-            ))}
+          <h2>Dirección</h2>
+    
+          {map(addresses, (address) => (
+            <div
+              key={address.id}
+              onClick={() => setAddressSelected(address)}
+              className={classNames(styles.address, {
+                [styles.active]: address.id === addressSelected?.id,
+              })}
+            >
+              <p>
+                {address.attributes.name} ({address.attributes.title})
+              </p>
+              <p>
+                {address.attributes.address}, {address.attributes.postal_code},{" "}
+                {address.attributes.state}, {address.attributes.city}
+              </p>
+            </div>
+          ))}
         </div>
-    )
+      );
 }
