@@ -1,5 +1,5 @@
 import { Basket } from "./Basket";
-// import { Resume } from "./Resume";
+import { Resume } from "./Resume";
 import styles from "./StepOne.module.scss";
 
 export function StepOne(props) {
@@ -11,7 +11,7 @@ export function StepOne(props) {
         <Basket games={games}/>
       </div>
       <div className={styles.right}>
-        <>RESUMEN</>
+        <Resume games={games}/>
       </div>
     </div>
   );
