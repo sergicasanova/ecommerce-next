@@ -11,22 +11,33 @@ export function Addresses(props) {
     const { addressSelected, setAddressSelected } = props;
     const [addresses, setAddresses] = useState(null);
     const { user } = useAuth();
-    console.log(addresses);
 
     useEffect(() => {
         (async () => {
-          try {
+        try {
             const response = await addressCtrl.getAll(user.id);
-            setAddresses(response);
-          } catch (error) {
+            setAddresses(response.data);
+        } catch (error) {
             console.error(error);
-          }
+        }
         })();
-      }, []);
+    }, []);
 
     return (
-        <div>
-            <h2>Addresses</h2>
+        <div className={styles.addresses}>
+            <h2>Dirección</h2>
+
+            {map(addresses, (address) => (
+                <div key={address.id} className={styles.address}>
+                    <p>
+                        {address.attributes.name} ({address.attributes.title})
+                    </p>
+                    <p>
+                        {address.attributes.address}, {address.attributes.postal_code},{" "}
+                        {address.attributes.state}, {address.attributes.city} 
+                    </p>
+                </div>
+            ))}
         </div>
     )
 }
