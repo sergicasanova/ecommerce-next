@@ -20,6 +20,11 @@ export function CartProvider(props) {
         refreshTotalCart();
     };
 
+    const changeQuantityItem = (gameId, quantity) => {
+      cartCtrl.changeQuantity(gameId, quantity);
+      refreshTotalCart();
+    }
+
     const refreshTotalCart = () => {
         setTotal(cartCtrl.count());
         setCart(cartCtrl.getAll());
@@ -32,7 +37,7 @@ export function CartProvider(props) {
         total,
         deleteItem: () => {},
         deleteAllItems: () => {},
-        changeQuantityItem: () => {},
+        changeQuantityItem,
       };
 
     return <CartContext.Provider value={data}>{children}</CartContext.Provider>
