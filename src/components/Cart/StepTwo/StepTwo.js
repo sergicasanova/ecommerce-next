@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { ENV } from "@/utils";
 import { Payment } from "./Payment";
+import { Resume } from "./Resume";
 import styles from "./StepTwo.module.scss";
 
 //traemos el token de constants
@@ -27,7 +28,7 @@ export function StepTwo(props) {
             </div>
 
             <div className={styles.right}>
-                <p>RESUMEN</p>
+                <Resume games={games} addressSelected={addressSelected} />
             </div>
         </div>
     </Elements>
