@@ -30,7 +30,7 @@ export default function account() {
       menuItem: "Mis pedidos",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>Mis pedidos...</p>
+          <Separator height={80}/>
         </Tab.Pane>
       ),
     },

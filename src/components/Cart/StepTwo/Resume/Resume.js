@@ -8,15 +8,17 @@ import { useAuth, useCart } from "@/hooks";
 import { fn } from "@/utils";
 import styles from "./Resume.module.scss";
 
+const cartCtrl = new Cart();
+
 export function Resume(props) {
     const { games, addressSelected } = props;
     const [total, setTotal] = useState(null);
-    // const [loading, setLoading] = useState(false);
-    // const stripe = useStripe();
-    // const elements = useElements();
-    // const { user } = useAuth();
-    // const { deleteAllItems } = useCart();
-    // const router = useRouter();
+    const [loading, setLoading] = useState(false);
+    const stripe = useStripe();
+    const elements = useElements();
+    const { user } = useAuth();
+    const { deleteAllItems } = useCart();
+    const router = useRouter();
 
     //precio que vamos a pagar
     useEffect(() => {
@@ -32,6 +34,48 @@ export function Resume(props) {
     
         setTotal(totalTemp.toFixed(2));
     }, [games]);
+
+    const onPay = async () => {
+        setLoading(true);
+        // deleteAllItems();
+        // goToStepEnd();
+    
+        if (!stripe || !elements) {
+          setLoading(false);
+          return;
+        }
+    
+        const cardElement = elements.getElement(CardElement);
+        const result = await stripe.createToken(cardElement);
+    
+        if (result.error) {
+          console.error(result.error.message);
+        } else {
+          const response = await cartCtrl.paymentCart(
+            result.token,
+            games,
+            user.id,
+            addressSelected
+          );
+    
+          if (response.status === 200) {
+            deleteAllItems();
+            goToStepEnd();
+          } else {
+            console.error("Error al realizar el pedido");
+          }
+        }
+    
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+    };
+
+    const goToStepEnd = () => {
+    router.replace({ query: { ...router.query, step: 3 } });
+    };
+
+    if (!total) return null;
 
     return (
         <div className={styles.resume}>
@@ -64,7 +108,11 @@ export function Resume(props) {
                     <span>{total}€</span>
                 </div>
 
-                <Button primary fluid disabled={!addressSelected}>
+                <Button primary fluid 
+                disabled={!addressSelected} 
+                onClick={onPay}
+                loading={loading}
+                >
                     Pagar
                 </Button>
             </div>
